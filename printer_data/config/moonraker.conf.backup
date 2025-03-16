@@ -5,13 +5,12 @@ klippy_uds_address: /home/Magnus/printer_data/comms/klippy.sock
 
 [authorization]
 trusted_clients:
-    192.168.0.0/16
     10.0.0.0/8
     127.0.0.0/8
+    127.0.0.1
     169.254.0.0/16
     172.16.0.0/12
     192.168.0.0/16
-    FC00::/7
     FE80::/10
     ::1/128
 cors_domains:
@@ -30,15 +29,16 @@ cors_domains:
 channel: dev
 refresh_interval: 168
 
-[update_manager mainsail]
-path: /home/Magnus/mainsail
-repo: mainsail-crew/mainsail
-channel: stable
-type: web
-
-[update_manager mainsail-config]
-managed_services: klipper
-origin: https://github.com/mainsail-crew/mainsail-config.git
-path: /home/Magnus/mainsail-config
-primary_branch: master
+[update_manager fluidd-config]
 type: git_repo
+primary_branch: master
+path: ~/fluidd-config
+origin: https://github.com/fluidd-core/fluidd-config.git
+managed_services: klipper
+
+[update_manager fluidd]
+type: web
+channel: stable
+repo: fluidd-core/fluidd
+path: ~/fluidd
+
